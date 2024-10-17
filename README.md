@@ -8,19 +8,14 @@
 
 ## Installation
 
-1. Navigate to the `server/` directory:
 
-   ```bash
-   cd server/
-   ```
-
-2. Lock dependencies without updating:
+1. Lock dependencies without updating:
 
    ```bash
    poetry lock --no-update
    ```
 
-3. Install the dependencies:
+2. Install the dependencies:
 
    ```bash
    poetry install

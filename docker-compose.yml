@@ -9,8 +9,8 @@ services:
       - "50051:50051"
     networks:
       - my-network
-    environment:
-      - DATABASE_HOST=oracle-db
+    env_file:
+      - .env
     depends_on:
       oracle-db:
         condition: service_healthy
