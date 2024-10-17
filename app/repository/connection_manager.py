@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 from sql_alchemy.connection import get_session
-
+from custom_logger import logger
 
 class ConnectionManager:
     def __init__(self):
