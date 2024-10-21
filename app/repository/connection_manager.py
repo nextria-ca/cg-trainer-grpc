@@ -1,5 +1,6 @@
 from contextlib import asynccontextmanager
 from sql_alchemy.connection import get_session
+from custom_logger import logger
 
 
 class ConnectionManager:
@@ -11,13 +12,16 @@ class ConnectionManager:
         self.current_session = connection
         self.transaction = await self.current_session.__aenter__()
         self.transaction_started = True
+        logger.info("Transaction started")
 
     async def end_transaction(self, commit=True):
         if self.current_session and self.transaction_started:
             try:
                 if commit:
+                    logger.info("Committing transaction")
                     await self.transaction.commit()
                 else:
+                    logger.info("Rolling back transaction")
                     await self.transaction.rollback()
             finally:
                 await self.current_session.__aexit__(None, None, None)
@@ -27,8 +31,8 @@ class ConnectionManager:
     @asynccontextmanager
     async def get_session(self):
         if self.transaction_started:
-            async with self.current_session as session:
-                yield session
+            logger.info("Using transaction")
+            yield self.transaction
         else:
             async with get_session() as session:
                 yield session

@@ -8,13 +8,14 @@ from mapper.Mapper import (
     TrainsetContentMapper,
     TrainsetMapper
 )
-from repository.repository import (
-    AcronymRepository,
-    AcronymTrainDataRepository,
-    ModelRepository,
-    TrainsetContentRepository,
-    TrainsetRepository
-)
+
+from repository.acronym_repository import AcronymRepository
+from repository.acronym_traindata_repository import AcronymTrainDataRepository
+from repository.model_repository import ModelRepository
+
+from repository.trainset_content_repository import TrainsetContentRepository
+from repository.trainset_repository import TrainsetRepository
+
 from services.acronyms_service import AcronymService
 from services.acronyms_traindata_service import AcronymTrainDataService
 from services.model_service import ModelService

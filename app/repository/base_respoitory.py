@@ -6,7 +6,7 @@ from sqlalchemy import select
 from models.base_model import BaseModel
 from repository.connection_manager import ConnectionManager
 from functools import wraps
-
+from sqlalchemy import select, text
 
 def exception_handler_decorator(method):
     @wraps(method)
@@ -24,8 +24,8 @@ T = TypeVar('T', bound=BaseModel)
 
 
 class BaseRepository(Generic[T]):
-    def __init__(self, clazz: T):
-        self.connection_manager = ConnectionManager()
+    def __init__(self, clazz: T, connection_manager: ConnectionManager):
+        self.connection_manager = connection_manager
         self.clazz = clazz
 
     @exception_handler_decorator

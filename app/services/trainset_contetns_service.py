@@ -1,5 +1,7 @@
 from mapper.Mapper import TrainsetContentMapper
-from repository.repository import TrainsetContentRepository
+from repository.trainset_content_repository import (
+    TrainsetContentRepository
+)
 from services.base_service import grpc_exception_handler_decorator
 from services.proto import acronyms_pb2_grpc
 
