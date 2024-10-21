@@ -1,5 +1,6 @@
+
 from mapper.Mapper import TrainsetMapper
-from repository.repository import TrainsetRepository
+from repository.trainset_repository import TrainsetRepository
 from services.base_service import grpc_exception_handler_decorator
 from services.proto import acronyms_pb2_grpc
 
@@ -11,6 +12,7 @@ class TrainsetService(
     def __init__(
         self,
         repository: TrainsetRepository,
+       
         mapper: TrainsetMapper
     ):
         super().__init__()
@@ -59,7 +61,10 @@ class TrainsetService(
 
     @grpc_exception_handler_decorator
     async def save_checkpoint(self, request):
-        model = await self.repository.duplicate_by_id(request.id)
+        model = await self.repository.duplicate_by_id(
+            request.id,
+            request.version
+        )
         return self.mapper.orm_to_grpc(model)
 
     @grpc_exception_handler_decorator

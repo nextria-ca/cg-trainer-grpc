@@ -51,7 +51,7 @@ class AcronymServiceStub(object):
                 _registered_method=True)
         self.delete = channel.unary_unary(
                 '/acronyms.AcronymService/delete',
-                request_serializer=acronyms__pb2.Acronym.SerializeToString,
+                request_serializer=acronyms__pb2.AcronymWithTrainsetId.SerializeToString,
                 response_deserializer=acronyms__pb2.Empty.FromString,
                 _registered_method=True)
         self.get_by_id = channel.unary_unary(
@@ -136,7 +136,7 @@ def add_AcronymServiceServicer_to_server(servicer, server):
             ),
             'delete': grpc.unary_unary_rpc_method_handler(
                     servicer.delete,
-                    request_deserializer=acronyms__pb2.Acronym.FromString,
+                    request_deserializer=acronyms__pb2.AcronymWithTrainsetId.FromString,
                     response_serializer=acronyms__pb2.Empty.SerializeToString,
             ),
             'get_by_id': grpc.unary_unary_rpc_method_handler(
@@ -261,7 +261,7 @@ class AcronymService(object):
             request,
             target,
             '/acronyms.AcronymService/delete',
-            acronyms__pb2.Acronym.SerializeToString,
+            acronyms__pb2.AcronymWithTrainsetId.SerializeToString,
             acronyms__pb2.Empty.FromString,
             options,
             channel_credentials,
@@ -635,7 +635,7 @@ class TrainsetServiceStub(object):
                 _registered_method=True)
         self.save_checkpoint = channel.unary_unary(
                 '/acronyms.TrainsetService/save_checkpoint',
-                request_serializer=acronyms__pb2.IdRequest.SerializeToString,
+                request_serializer=acronyms__pb2.Trainset.SerializeToString,
                 response_deserializer=acronyms__pb2.Trainset.FromString,
                 _registered_method=True)
         self.set_active = channel.unary_unary(
@@ -731,7 +731,7 @@ def add_TrainsetServiceServicer_to_server(servicer, server):
             ),
             'save_checkpoint': grpc.unary_unary_rpc_method_handler(
                     servicer.save_checkpoint,
-                    request_deserializer=acronyms__pb2.IdRequest.FromString,
+                    request_deserializer=acronyms__pb2.Trainset.FromString,
                     response_serializer=acronyms__pb2.Trainset.SerializeToString,
             ),
             'set_active': grpc.unary_unary_rpc_method_handler(
@@ -905,7 +905,7 @@ class TrainsetService(object):
             request,
             target,
             '/acronyms.TrainsetService/save_checkpoint',
-            acronyms__pb2.IdRequest.SerializeToString,
+            acronyms__pb2.Trainset.SerializeToString,
             acronyms__pb2.Trainset.FromString,
             options,
             channel_credentials,
@@ -1242,7 +1242,7 @@ class ModelServiceStub(object):
                 _registered_method=True)
         self.delete = channel.unary_unary(
                 '/acronyms.ModelService/delete',
-                request_serializer=acronyms__pb2.Model.SerializeToString,
+                request_serializer=acronyms__pb2.ModelWithTrainsetId.SerializeToString,
                 response_deserializer=acronyms__pb2.Empty.FromString,
                 _registered_method=True)
         self.get_by_id = channel.unary_unary(
@@ -1305,7 +1305,7 @@ def add_ModelServiceServicer_to_server(servicer, server):
             ),
             'delete': grpc.unary_unary_rpc_method_handler(
                     servicer.delete,
-                    request_deserializer=acronyms__pb2.Model.FromString,
+                    request_deserializer=acronyms__pb2.ModelWithTrainsetId.FromString,
                     response_serializer=acronyms__pb2.Empty.SerializeToString,
             ),
             'get_by_id': grpc.unary_unary_rpc_method_handler(
@@ -1420,7 +1420,7 @@ class ModelService(object):
             request,
             target,
             '/acronyms.ModelService/delete',
-            acronyms__pb2.Model.SerializeToString,
+            acronyms__pb2.ModelWithTrainsetId.SerializeToString,
             acronyms__pb2.Empty.FromString,
             options,
             channel_credentials,

@@ -1,5 +1,5 @@
 from mapper.Mapper import AcronymTrandataMapper
-from repository.repository import AcronymTrainDataRepository
+from repository.acronym_traindata_repository import AcronymTrainDataRepository
 from services.base_service import grpc_exception_handler_decorator
 import services.proto.acronyms_pb2_grpc as acronyms_pb2_grpc
 

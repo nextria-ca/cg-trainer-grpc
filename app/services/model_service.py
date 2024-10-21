@@ -1,5 +1,5 @@
 from mapper.Mapper import ModelMapper
-from repository.repository import ModelRepository
+from repository.model_repository import ModelRepository
 from services.base_service import grpc_exception_handler_decorator
 import services.proto.acronyms_pb2_grpc as acronyms_pb2_grpc
 
@@ -45,5 +45,5 @@ class ModelService(
 
     @grpc_exception_handler_decorator
     async def delete(self, request):
-        await self.repository.delete(request.id)
+        await self.repository.delete(request.model.id, request.trainset_id)
         return self.mapper.empty()

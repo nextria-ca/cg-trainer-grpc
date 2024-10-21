@@ -1,9 +1,11 @@
 from mapper.Mapper import AcronymMapper
-from repository.repository import (
+from repository.acronym_repository import (
     AcronymRepository,
-    TrainsetContentRepository,
-    TrainsetRepository
 )
+from repository.trainset_content_repository import (
+    TrainsetContentRepository,
+)
+from repository.trainset_repository import TrainsetRepository
 from models.trainset_contents import TrainsetContent
 from services.base_service import grpc_exception_handler_decorator
 
@@ -55,7 +57,7 @@ class AcronymService(
 
     @grpc_exception_handler_decorator
     async def delete(self, request):
-        await self.repository.delete(request.id)
+        await self.repository.delete(request.acronym.id, request.trainset_id)
         return self.mapper.empty()
 
     @grpc_exception_handler_decorator

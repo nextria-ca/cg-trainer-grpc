@@ -49,7 +49,7 @@ async def init_db():
         except Exception as e:
             logger.error("Could not sync database")
             logger.info("Retrying in 5 seconds...")
-            if tries == 3:
+            if tries == 5:
                 logger.error(f"Error initializing database: {e}")
                 raise
             tries += 1
